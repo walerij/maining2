@@ -13,25 +13,26 @@
         {
             ?>
 
-           <h4>Пользователь:<?=$user->login;?> </h4>
-           <h4>Статус пользователя: <?=$user->status;?></h4>
-           <h4>Счет: <?=$user->score->score;?></h4>
-
-            <h4>Вывод хешей</h4>
-            <table class="table table-bordered table-hover">
+           <h4>Пользователь:<strong><?=$user->login;?></strong> </h4>
+           <h4>Статус пользователя:<strong> <?=$user->status;?></strong></h4>
+           <h4>Счет: <span class="btn btn-info"> <?=$user->score->score;?></span></h4>
+           <hr>
+           <h4>Транзацкии вывода хешей</h4>
+           <table class="table table-bordered table-hover">
                 <tr>
                     <th>Дата вывода</th>
                     <th>Сервис вывода</th>
                     <th>Счет</th>
                     <th>Сумма</th>
                 </tr>
-
+            <? foreach ($user->score->scoreoutput as $output){?>
                 <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
+                    <td><?=$output->dateoutput; ?></td>
+                    <td><?=$output->scoreorg; ?></td>
+                    <td><?=$output->scorenumber; ?></td>
+                    <td><?=$output->scoresum; ?></td>
                 </tr>
+               <?}?>
             </table>
 
         <?php } ?>

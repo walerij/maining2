@@ -12,4 +12,9 @@ class ScoreRecord extends ActiveRecord{
     {
         return $this->hasOne(UserRecord::className(),['id'=>'user_id']);
     }
+
+    public function getScoreoutput()
+    {
+        return $this->hasMany(ScoreoutputRecord::className(),['scoreid'=>'id']);
+    }
 }
