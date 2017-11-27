@@ -123,4 +123,10 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionUserscore()
+    {
+        return $this->render('userscore');
+
+    }
 }
