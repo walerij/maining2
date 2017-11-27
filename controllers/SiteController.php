@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\UserRecord;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -126,7 +127,9 @@ class SiteController extends Controller
 
     public function actionUserscore()
     {
-        return $this->render('userscore');
+        $userRecord= UserRecord::find()->all();
+
+        return $this->render('userscore',['userRecord'=>$userRecord]);
 
     }
 }
