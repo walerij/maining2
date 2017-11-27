@@ -34,7 +34,9 @@
                 </tr>
                <?}?>
             </table>
-
+             <a class="btn btn-success" href="/site/addoutput/" title="Добавить вывод">
+                 Добавить
+             </a>
         <?php } ?>
     </div>
 </div>

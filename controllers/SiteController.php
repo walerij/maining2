@@ -127,9 +127,18 @@ class SiteController extends Controller
 
     public function actionUserscore()
     {
-        $userRecord= UserRecord::find()->all();
+        $userRecord= UserRecord::find()->where(['login'=>'user1'])->all();
 
         return $this->render('userscore',['userRecord'=>$userRecord]);
 
     }
+
+    public function actionAddoutput()
+    {
+        return $this->render('addoutput');
+    }
+
+
+
+
 }
