@@ -38,7 +38,7 @@ AppAsset::register($this);
     if(Yii::$app->user->isGuest)
        $items=[
         ['label' => 'Score', 'url' => ['/site/userscore']],
-        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Add', 'url' => ['/site/adduser']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
            ['label' => 'Login', 'url' => ['/site/login']]
 

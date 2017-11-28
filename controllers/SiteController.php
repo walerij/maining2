@@ -10,20 +10,21 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\UserForm;
 
-class SiteController extends Controller
-{
+
+class SiteController extends Controller {
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::className(),
                 'only' => ['logout'],
                 'rules' => [
-                    [
+                        [
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
@@ -42,8 +43,7 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function actions()
-    {
+    public function actions() {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -60,8 +60,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         return $this->render('index');
     }
 
@@ -70,8 +69,7 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function actionLogin()
-    {
+    public function actionLogin() {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -81,7 +79,7 @@ class SiteController extends Controller
             return $this->goBack();
         }
         return $this->render('login', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -90,8 +88,7 @@ class SiteController extends Controller
      *
      * @return Response
      */
-    public function actionLogout()
-    {
+    public function actionLogout() {
         Yii::$app->user->logout();
 
         return $this->goHome();
@@ -102,8 +99,7 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function actionContact()
-    {
+    public function actionContact() {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -111,7 +107,7 @@ class SiteController extends Controller
             return $this->refresh();
         }
         return $this->render('contact', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -120,25 +116,37 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionAbout()
-    {
+    public function actionAbout() {
         return $this->render('about');
     }
 
-    public function actionUserscore()
-    {
-        $userRecord= UserRecord::find()->where(['login'=>'user1'])->all();
+    public function actionUserscore() {
+        $userRecord = UserRecord::find()->where(['login' => 'user1'])->all();
 
-        return $this->render('userscore',['userRecord'=>$userRecord]);
-
+        return $this->render('userscore', ['userRecord' => $userRecord]);
     }
 
-    public function actionAddoutput()
-    {
+    public function actionAddoutput() {
         return $this->render('addoutput');
     }
 
+    public function actionAdduser() {
 
+        if (Yii::$app->request->isPost)
+            return $this->addUserPost();
+        $userAdd = new UserForm();
+        return $this->render('user\adduser', ['AddUser' => $userAdd]);
+    }
 
+    public function addUserPost() {
+        $userAdd = new UserForm();
+        if ($userAdd->load(Yii::$app->request->post()))
+            if ($userAdd->validate()) {
+                $userRecord = new UserRecord();
+                $userRecord->setUserAddForm($userAdd);
+                $userRecord->save();
+                return $this->redirect('/site/userscore');
+            }
+    }
 
 }
