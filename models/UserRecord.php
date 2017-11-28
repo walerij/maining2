@@ -1,7 +1,9 @@
 <?php
  namespace app\models;
 
+
  use yii\db\ActiveRecord;
+ use yii;
 
  class UserRecord extends ActiveRecord{
 
@@ -19,8 +21,14 @@
     {
         $this->nickname=$userJoinForm->nickname;
         $this->login=$userJoinForm->login;
-        $this->password=$userJoinForm->password;
+        $this->setPassword($userJoinForm->password);
         $this->status=$userJoinForm->status;
 
     }
+
+     public function setPassword($password)
+     {
+         $this->password=Yii::$app->security->generatePasswordHash($password);
+       //  $this->authokey=Yii::$app->security->generateRandomString(100);
+     }
  }

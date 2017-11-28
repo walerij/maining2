@@ -145,8 +145,15 @@ class SiteController extends Controller {
                 $userRecord = new UserRecord();
                 $userRecord->setUserAddForm($userAdd);
                 $userRecord->save();
-                return $this->redirect('/site/userscore');
+                return $this->render('user\usersuccess',['AddUser'=>$userRecord]);
             }
+        return $this->render('user\adduser', ['AddUser' => $userAdd]);
+    }
+
+    public function actionAddscore()
+    {
+
+        return $this->render('score\addscore');
     }
 
 }
