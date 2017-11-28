@@ -150,10 +150,13 @@ class SiteController extends Controller {
         return $this->render('user\adduser', ['AddUser' => $userAdd]);
     }
 
+    /**
+     * @return string
+     */
     public function actionAddscore()
     {
-
-        return $this->render('score\addscore');
+        $_id =  Yii::$app->request->get('id');
+        return $this->render('score\addscore',['id'=>$_id]);
     }
 
 }
