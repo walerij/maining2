@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\UserRecord;
+use app\models\ScoreRecord;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -127,7 +128,8 @@ class SiteController extends Controller {
     }
 
     public function actionAddoutput() {
-        return $this->render('addoutput');
+        
+        return $this->render('scoreoutput\addoutput');
     }
 
     public function actionAdduser() {
@@ -145,7 +147,11 @@ class SiteController extends Controller {
                 $userRecord = new UserRecord();
                 $userRecord->setUserAddForm($userAdd);
                 $userRecord->save();
-                return $this->render('user\usersuccess',['AddUser'=>$userRecord]);
+                $scoreRecord= new ScoreRecord();
+                $scoreRecord->addScore($userRecord);
+                $scoreRecord->save();
+                //return $this->render('user\usersuccess',['AddUser'=>$userRecord]);
+                return $this->redirect('/site/userscore/');
             }
         return $this->render('user\adduser', ['AddUser' => $userAdd]);
     }

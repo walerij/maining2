@@ -13,7 +13,7 @@
         {
             ?>
 
-           <h4>Пользователь:<strong><?=$user->login;?></strong> </h4>
+           <h4>Пользователь:<strong><?=$user->nickname;?></strong> </h4>
            <h4>Статус пользователя:<strong> <?=$user->status;?></strong></h4>
            <h4>Счет: <span class="btn btn-info"> <?=$user->score->score;?></span></h4>
            <hr>

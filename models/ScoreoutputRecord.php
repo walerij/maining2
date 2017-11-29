@@ -8,4 +8,8 @@ class ScoreoutputRecord extends ActiveRecord{
     {
         return "scoreoutput";
     }
+    
+    public function setRecord($scoreoutput){
+        
+    }
 }
