@@ -11,14 +11,17 @@
     <div class="panel-body">
         <div>Добавление</div>
         <div>
-
+            <?php $form= \yii\bootstrap\ActiveForm::begin()?>
+             <?=$form->field($output, 'dateoutput')?>
+             <?=$form->field($output, 'u')?>
+             <?=$form->field($output, 'dateoutpt')?>
+             <?=$form->field($output, 'dateoutpt')?>
+            <button class="btn btn-success" type="submit">
+                Сохранить запись
+            </button>
+            <?php \yii\bootstrap\ActiveForm::end(); ?>
         </div>
     </div>
 </div>
 <?php
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 27.11.2017
- * Time: 22:53
- */
+?>
