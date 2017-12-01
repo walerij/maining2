@@ -1,4 +1,7 @@
+<?
 
+use yii\helpers\Url;
+?>
 
 <div class="panel panel-success">
     <div class="panel-heading">
@@ -9,8 +12,11 @@
     </div>
     <div class="panel-body">
         <?php
+        
+        
         foreach ($userRecord as $user)
         {
+            $url=Url::to(['/site/addoutput/', 'id' => $user->score->id]);
             ?>
 
            <h4>Пользователь:<strong><?=$user->nickname;?></strong> </h4>
@@ -31,11 +37,12 @@
                     <td><?=$output->scoreorg; ?></td>
                     <td><?=$output->scorenumber; ?></td>
                     <td><?=$output->scoresum; ?></td>
+                    
                 </tr>
                <?}?>
             </table>
           
-             <a class="btn btn-success" href="/site/addoutput/" title="Добавить вывод">
+             <a class="btn btn-success" href="<?=$url;?>" title="Добавить вывод">
                  Добавить запись
              </a>
         <?php } ?>

@@ -3,7 +3,7 @@ namespace app\models;
 use yii\base\Model;
 
 class ScoreoutputForm extends Model{
-    public $score_id;
+    public $scoreid;
     public $dateoutput;
     public $scoreorg;
     public $scorenumber;
@@ -13,7 +13,11 @@ class ScoreoutputForm extends Model{
     {
         return
         [
-            ['dateoutput','required']
+            ['scoreid','required'],
+            ['dateoutput','required'],
+            ['scoreorg','required'],
+            ['scorenumber','required'],
+            ['scoresum','required']
         ];
     }
 

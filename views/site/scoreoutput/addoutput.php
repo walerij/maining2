@@ -12,10 +12,11 @@
         <div>Добавление</div>
         <div>
             <?php $form= \yii\bootstrap\ActiveForm::begin()?>
+             <?=$form->field($output, 'scoreid')?>
              <?=$form->field($output, 'dateoutput')?>
-             <?=$form->field($output, 'u')?>
-             <?=$form->field($output, 'dateoutpt')?>
-             <?=$form->field($output, 'dateoutpt')?>
+             <?=$form->field($output, 'scoreorg')?>
+             <?=$form->field($output, 'scorenumber')?>
+             <?=$form->field($output, 'scoresum')?>
             <button class="btn btn-success" type="submit">
                 Сохранить запись
             </button>

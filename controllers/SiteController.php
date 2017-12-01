@@ -12,6 +12,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\UserForm;
+use \app\models\ScoreoutputForm;
+use \app\models\ScoreoutputRecord;
 
 
 class SiteController extends Controller {
@@ -122,14 +124,24 @@ class SiteController extends Controller {
     }
 
     public function actionUserscore() {
-        $userRecord = UserRecord::find()->where(['login' => 'user1'])->all();
+        $userRecord = UserRecord::find()->where(['login' => 'user2'])->all();
 
         return $this->render('userscore', ['userRecord' => $userRecord]);
     }
 
     public function actionAddoutput() {
+          if (Yii::$app->request->isPost)
+            return $this->addOutputPost();
         
-        return $this->render('scoreoutput\addoutput');
+        $_id =  Yii::$app->request->get('id');
+      //  $Scoreoutputrecord = ScoreoutputRecord::find()->where(['score_id' => id])->all(); 
+         
+         $scoreoutputForm=new ScoreoutputForm();
+         if ($_id!=null)
+           $scoreoutputForm->scoreid=$_id;
+         else 
+           $scoreoutputForm->scoreid=1;
+        return $this->render('scoreoutput\addoutput',['output'=>$scoreoutputForm]);
     }
 
     public function actionAdduser() {
@@ -153,8 +165,20 @@ class SiteController extends Controller {
                 //return $this->render('user\usersuccess',['AddUser'=>$userRecord]);
                 return $this->redirect('/site/userscore/');
             }
-        return $this->render('user\adduser', ['AddUser' => $userAdd]);
+      //  return $this->render('user\adduser', ['AddUser' => $userAdd]);
     }
+        public function addOutputPost() {
+        
+            $output = new ScoreoutputForm();
+            if($output->load(Yii::$app->request->post()))
+                if($output->validate())
+                {
+                    $outputRecord= new ScoreoutputRecord();
+                    $outputRecord->setRecord($output);
+                    $outputRecord->save();
+                    return $this->redirect('/site/userscore/');
+                }
+        }
 
     /**
      * @return string
@@ -165,4 +189,5 @@ class SiteController extends Controller {
         return $this->render('score\addscore',['id'=>$_id]);
     }
 
+    
 }
