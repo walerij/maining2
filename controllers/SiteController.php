@@ -142,7 +142,11 @@ class SiteController extends Controller {
            $scoreoutputForm->scoreid=$_id;
          else 
            $scoreoutputForm->scoreid=1;
-        return $this->render('scoreoutput\addoutput',['output'=>$scoreoutputForm]);
+         $pays=PaysystemRecord::find()->all();
+
+        return $this->render('scoreoutput\addoutput',
+            ['output'=>$scoreoutputForm,
+                'pays'=>$pays]);
     }
 
     public function actionAdduser() {
@@ -192,7 +196,7 @@ class SiteController extends Controller {
 
     public function actionViewpaysystem()
     {
-        $paysystemRecord= PaysystemRecord::find()->where(['id' => '1'])->all();;
+        $paysystemRecord= PaysystemRecord::find()->where(['id' => '1'])->all();
         return $this->render('paysystem\viewpaysystem',
             ['paysystemRecord'=>$paysystemRecord]);
     }

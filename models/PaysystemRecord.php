@@ -16,4 +16,13 @@ class PaysystemRecord extends ActiveRecord{
         $this->info= $paysystemform->info;
         $this->link= $paysystemform->link;
     }
+
+    public function getRecordAll()
+    {
+        $pays= PaysystemRecord::find()->all();
+        $pays1 = array();
+       /* foreach ($pays as $pay)
+            $pays1[$pays]=$pays;*/
+        return $pays1;
+    }
 }

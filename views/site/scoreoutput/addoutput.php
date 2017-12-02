@@ -15,9 +15,9 @@
              <?=$form->field($output, 'dateoutput')->label('Дата записи')?>
              <?//=$form->field($output, 'scoreorg')->label('Сервис вывода')?>
             <?=$form->field($output, 'scoreorg')->dropDownList([
-                    'А' => 'Яндекс',
-                    'Б' => 'KIWI',
-                    'В' => 'PayPal',            ],
+                    'Яндекс' => 'Яндекс',
+                    'KIWI' => 'KIWI',
+                    'PayPal' => 'PayPal',            ],
             [
             'prompt' => 'Выберите один вариант'
             ]); ?>

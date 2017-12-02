@@ -18,10 +18,10 @@
                <th>Наименование</th>
                <th>Информация</th>
                <th>Лого</th>
-               <th>  <i class="glyphicon glyphicon-hand-down">
-
-                   </i></th>
-
+               <th>
+               <a class="btn btn-default img-rounded" href="" title="Добавить запись">
+                   <i class="glyphicon glyphicon-plus"></i>
+               </a>
            </tr>
            <? foreach ($paysystemRecord as $paysystem) {
                ?>
@@ -30,9 +30,7 @@
                  <td><?=$paysystem->info;?></td>
                  <td><img src="/../<?=$paysystem->link;?>" alt="no"> </td>
                  <td>
-                    <a class="btn btn-info" href="" title="Добавить запись">
-                        <i class="glyphicon glyphicon-plus"></i>
-                    </a>
+
                      <a class="btn btn-info" href="" title="Редактировать запись">
                          <i class="glyphicon glyphicon-edit"></i>
                      </a>
