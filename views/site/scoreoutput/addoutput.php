@@ -13,8 +13,15 @@
             <?php $form= \yii\bootstrap\ActiveForm::begin()?>
 
              <?=$form->field($output, 'dateoutput')->label('Дата записи')?>
-             <?=$form->field($output, 'scoreorg')->label('Сервис вывода')?>
-             <?=$form->field($output, 'scorenumber')->label('Номер счета')?>
+             <?//=$form->field($output, 'scoreorg')->label('Сервис вывода')?>
+            <?=$form->field($output, 'scoreorg')->dropDownList([
+                    'А' => 'Яндекс',
+                    'Б' => 'KIWI',
+                    'В' => 'PayPal',            ],
+            [
+            'prompt' => 'Выберите один вариант'
+            ]); ?>
+             <?=$form->field($output, 'scorenumber')->label('Номер счета')->hint('Размер 20 символов')?>
              <?=$form->field($output, 'scoresum')->label('Сумма')?>
             <button class="btn btn-success" type="submit">
                 Сохранить запись
