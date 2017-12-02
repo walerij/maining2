@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\PaysystemRecord;
 use app\models\UserRecord;
 use app\models\ScoreRecord;
 use Yii;
@@ -187,6 +188,13 @@ class SiteController extends Controller {
     {
         $_id =  Yii::$app->request->get('id');
         return $this->render('score\addscore',['id'=>$_id]);
+    }
+
+    public function actionViewpaysystem()
+    {
+        $paysystemRecord= PaysystemRecord::find()->where(['id' => '1'])->all();;
+        return $this->render('paysystem\viewpaysystem',
+            ['paysystemRecord'=>$paysystemRecord]);
     }
 
     

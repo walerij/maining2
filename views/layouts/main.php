@@ -39,7 +39,7 @@ AppAsset::register($this);
        $items=[
         ['label' => 'Score', 'url' => ['/site/userscore']],
         ['label' => 'Add', 'url' => ['/site/adduser']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Платежные системы', 'url' => ['/site/viewpaysystem']],
            ['label' => 'Login', 'url' => ['/site/login']]
 
         /* Yii::$app->user->isGuest ? (
