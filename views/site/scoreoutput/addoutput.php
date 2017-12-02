@@ -9,17 +9,17 @@
         &nbsp;Счет
     </div>
     <div class="panel-body">
-        <div>Добавление</div>
         <div>
             <?php $form= \yii\bootstrap\ActiveForm::begin()?>
-             <?=$form->field($output, 'scoreid')?>
-             <?=$form->field($output, 'dateoutput')?>
-             <?=$form->field($output, 'scoreorg')?>
-             <?=$form->field($output, 'scorenumber')?>
-             <?=$form->field($output, 'scoresum')?>
+
+             <?=$form->field($output, 'dateoutput')->label('Дата записи')?>
+             <?=$form->field($output, 'scoreorg')->label('Сервис вывода')?>
+             <?=$form->field($output, 'scorenumber')->label('Номер счета')?>
+             <?=$form->field($output, 'scoresum')->label('Сумма')?>
             <button class="btn btn-success" type="submit">
                 Сохранить запись
             </button>
+            <?=$form->field($output, 'scoreid')->hiddenInput()->label('')?>
             <?php \yii\bootstrap\ActiveForm::end(); ?>
         </div>
     </div>
