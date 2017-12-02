@@ -156,10 +156,10 @@ class SiteController extends Controller {
         $userAdd = new UserForm();
         if ($userAdd->load(Yii::$app->request->post()))
             if ($userAdd->validate()) {
-                $userRecord = new UserRecord();
+                $userRecord = new UserRecord();//идет добавление пользователя
                 $userRecord->setUserAddForm($userAdd);
                 $userRecord->save();
-                $scoreRecord= new ScoreRecord();
+                $scoreRecord= new ScoreRecord();//новому пользователю сразу добавляется счет
                 $scoreRecord->addScore($userRecord);
                 $scoreRecord->save();
                 //return $this->render('user\usersuccess',['AddUser'=>$userRecord]);
@@ -173,10 +173,10 @@ class SiteController extends Controller {
             if($output->load(Yii::$app->request->post()))
                 if($output->validate())
                 {
-                    $outputRecord= new ScoreoutputRecord();
-                    $outputRecord->setRecord($output);
-                    $outputRecord->save();
-                    return $this->redirect('/site/userscore/');
+                    $outputRecord= new ScoreoutputRecord();//добавляется запись
+                    $outputRecord->setRecord($output);//в нее вносятся данные
+                    $outputRecord->save();//сохраняется
+                    return $this->redirect('/site/userscore/'); //редиректится на состояние счета
                 }
         }
 

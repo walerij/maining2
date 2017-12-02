@@ -12,8 +12,8 @@ class ScoreoutputRecord extends ActiveRecord{
     public function setRecord($scoreoutput){
         $this->scoreid=$scoreoutput->scoreid;
         $this->dateoutput=$scoreoutput->dateoutput;
-        $this->scoreorg=$scoreoutput->scoreorg;
-        $this->scorenumber->$scoreoutput->scorenumber;
+        $this->scoreorg=    $scoreoutput->scoreorg;
+        $this->scorenumber= $scoreoutput->scorenumber;
         $this->scoresum=$scoreoutput->scoresum;
     }
 }
